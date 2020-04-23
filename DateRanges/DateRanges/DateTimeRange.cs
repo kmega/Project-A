@@ -27,7 +27,23 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange[] Add(DateTimeRange range)
         {
-            return null;
+            // If End date is after range.Start date then they overlap so they can be added.
+            if (End < range.Start)
+            {
+                End = range.End;
+                return null;
+            }
+            // If End date is before range.Start date then they don't overlap so they cannot be added.
+            else if (End > range.Start || Start < range.End)
+            {
+                throw new Exception("Dates cannot be added because they're not overlapping. Please use 'Merge' if you want to make longest period possible.");
+            }
+            // If Start date is before range.End date then they overlap so they can be added.
+            else
+            {
+                Start = range.Start;
+                return null;
+            }
         }
 
         /// <summary>
