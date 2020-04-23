@@ -27,7 +27,7 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange[] Add(DateTimeRange range)
         {
-
+            return null;
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange[] Subtract(DateTimeRange range)
         {
-
+            return null;
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace DateRanges
         /// <param name="dateRange"></param>
         public DateTimeRange Merge(DateTimeRange dateRange)
         {
-            
+            return null;
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange ExpandTo(DateTime date)
         {
-
+            return null;
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean IntersectsWith(DateTimeRange range)
         {
-
+            return true;
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean Contains(DateTimeRange range)
         {
-
+            return true;
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean StartsWith(DateTimeRange range)
         {
-
+            return true;
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean EndsWith(DateTimeRange range)
         {
-
+            return true;
         }
         
         /// <summary>
@@ -107,7 +107,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean IsContinuationOf(DateTimeRange dateRange)
         {
-            
+            return true;
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean IsEqualTo(DateTimeRange range)
         {
-
+            return true;
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean Contains(DateTime date)
         {
-            
+            return true;
         }
     }
 }
