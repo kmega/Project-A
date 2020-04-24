@@ -8,7 +8,7 @@ namespace ProjectTests
     public class AddMethodTests
     {
         [TestMethod]
-        public void ShouldAddRange01()
+        public void ShouldAddWhenEndIsNotPartOfRange()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -25,7 +25,7 @@ namespace ProjectTests
                 Start = new DateTime(2020, 4, 15),
                 End = new DateTime(2020, 5, 15)
             };
-            
+
             newRange.Add(range);
 
             // Assert
@@ -34,7 +34,7 @@ namespace ProjectTests
         }
 
         [TestMethod]
-        public void ShouldAddRange02()
+        public void ShouldAddWhenStartIsNotPartOfRange()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -60,7 +60,7 @@ namespace ProjectTests
         }
 
         [TestMethod]
-        public void ShouldAddRange03()
+        public void ShouldAddWhenCurrentRangeIsPartOfRange()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -84,8 +84,9 @@ namespace ProjectTests
             Assert.AreEqual(newRange.Start, range.Start);
             Assert.AreEqual(newRange.End, range.End);
         }
+
         [TestMethod]
-        public void ShouldAddRange04()
+        public void ShouldNotAddWhenRangeIsPartOfCurrentRange()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -112,12 +113,110 @@ namespace ProjectTests
     }
 
     [TestClass]
-    public class holder
+    public class SubtractMethodTests
     {
         [TestMethod]
-        public void holder01()
+        public void ShouldSubtractWhenEndIsNotPartOfRange()
         {
-            Assert.Fail();
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 15),
+                End = new DateTime(2020, 5, 15)
+            };
+
+            newRange.Subtract(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, range.Start);
+        }
+
+        [TestMethod]
+        public void ShouldSubtractWhenStartIsNotPartOfRange()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 3, 15),
+                End = new DateTime(2020, 4, 15)
+            };
+
+            newRange.Subtract(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, range.End);
+            Assert.AreEqual(newRange.End, currentRange.End);
+        }
+
+        [TestMethod]
+        public void ShouldNotSubtractWhenCurrentRangeIsPartOfRange()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 15),
+                End = new DateTime(2020, 4, 16)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            newRange.Subtract(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, currentRange.End);
+        }
+
+        [TestMethod]
+        public void ShouldNotSubtractWhenRangeIsPartOfCurrentRange()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 15),
+                End = new DateTime(2020, 4, 16)
+            };
+
+            newRange.Subtract(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, currentRange.End);
         }
     }
 }
