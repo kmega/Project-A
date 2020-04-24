@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,9 +41,14 @@ namespace DateRanges
                     End = range.End;
                     break;
                 case 3:
-                    // Nothing changes.
+                    // Changes nothing.
                     break;
+                case 4:
+                    throw new Exception("You can't add ranges that don't overlap. Use 'Merge' method to create longest period possible.");
+                default:
+                    throw new Exception("Something went wrong.");
             }
+
             return null;
         }
 
@@ -62,12 +68,32 @@ namespace DateRanges
                     End = range.Start;
                     break;
                 case 2:
-                    // Would subtract everything.
+                    // This would subtract everything so I'm assigning lowest value possible.
+                    Start = DateTime.MinValue;
+                    End = DateTime.MinValue;
                     break;
                 case 3:
-                    // Would create two different ranges.
-                    break;
+                    // Checks if subtraction won't split current range into two separate ranges.
+                    if (range.Start == Start)
+                    {
+                        Start = range.End;
+                        break;
+                    }
+                    else if (range.End == End)
+                    {
+                        End = range.Start;
+                        break;
+                    }
+                    else
+                    {
+                        throw new Exception("This subtraction would create two different ranges as a result.");
+                    }
+                case 4:
+                    throw new Exception("You can't subtract ranges that don't overlap.");
+                default:
+                    throw new Exception("Something went wrong.");
             }
+
             return null;
         }
 
@@ -87,12 +113,21 @@ namespace DateRanges
                     Start = dateRange.Start;
                     break;
                 case 2:
-                    // Would subtract everything.
+                    End = dateRange.End;
+                    Start = dateRange.Start;
                     break;
                 case 3:
-                    // Would create two different ranges.
+                    // Changes nothing.
                     break;
+                case 4:
+                    // Checks which date is the oldest and the newest and then assignes them.
+                    Start = Start < dateRange.Start ? Start : dateRange.Start;
+                    End = End > dateRange.End ? End : dateRange.End;
+                    break;
+                default:
+                    throw new Exception("Something went wrong.");
             }
+
             return null;
         }
 
@@ -103,6 +138,19 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange ExpandTo(DateTime date)
         {
+            if (date < Start)
+            {
+                throw new Exception("You can't expand to date that is before starting date.");
+            }
+            else if (date >= Start && date <= End)
+            {
+                // Changes nothing.
+            }
+            else
+            {
+                End = date;
+            }
+
             return null;
         }
 
@@ -113,8 +161,20 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean IntersectsWith(DateTimeRange range)
         {
-            return true;
+            switch (CheckCase(range))
+            {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    return true;
+                case 4:
+                    return false;
+                default:
+                    throw new Exception("Something went wrong.");
+            }
         }
+
 
         /// <summary>
         /// Return value indicating if current range contains whole given range
@@ -123,7 +183,18 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean Contains(DateTimeRange range)
         {
-            return true;
+            switch (CheckCase(range))
+            {
+                case 0:
+                case 1:
+                case 2:
+                case 4:
+                    return false;
+                case 3:
+                    return true;
+                default:
+                    throw new Exception("Something went wrong.");
+            }
         }
 
         /// <summary>
@@ -178,30 +249,30 @@ namespace DateRanges
 
         public int CheckCase(DateTimeRange range)
         {
-            // If Start date is in between range and End date is after range.End then both ranges overlap and action can be taken.
-            if (Start > range.Start && Start < range.End && End > range.End)
+            // If Start date is in between range and End date is after range.End.
+            if (Start >= range.Start && Start <= range.End && End > range.End)
             {
                 return 0;
             }
-            // If End date is in between range and Start date is before range.Start then both ranges overlap and action can be taken.
-            else if (End > range.Start && End < range.End && Start < range.Start)
+            // If End date is in between range and Start date is before range.Start.
+            else if (End >= range.Start && End <= range.End && Start < range.Start)
             {
                 return 1;
             }
-            // If Start and End dates are in between range parameter then both ranges overlap and acton can be taken.
-            else if (Start > range.Start && End < range.End)
+            // If Start and End dates are in between range.
+            else if (Start >= range.Start && End <= range.End)
             {
                 return 2;
             }
-            // If range is in between Start and End dates then both ranges overlap but nothing should happen.
-            else if (Start < range.Start && End > range.End)
+            // If range is in between Start and End dates.
+            else if (Start <= range.Start && End >= range.End)
             {
                 return 3;
             }
-            // In any other unexpected case throw an exception.
+            // If ranges don't overlap.
             else
             {
-                throw new Exception("Something went wrong.");
+                return 4;
             }
         }
     }
