@@ -107,14 +107,14 @@ namespace DateRanges
             switch (CheckCase(dateRange))
             {
                 case 0:
-                    End = dateRange.End;
+                    Start = dateRange.Start;
                     break;
                 case 1:
-                    Start = dateRange.Start;
+                    End = dateRange.End;
                     break;
                 case 2:
-                    End = dateRange.End;
                     Start = dateRange.Start;
+                    End = dateRange.End;
                     break;
                 case 3:
                     // Changes nothing.

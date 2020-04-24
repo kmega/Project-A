@@ -8,7 +8,7 @@ namespace ProjectTests
     public class AddMethodTests
     {
         [TestMethod]
-        public void ShouldAddWhenEndIsNotPartOfRange()
+        public void ShouldAddWhenEndIsOutside()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -34,7 +34,7 @@ namespace ProjectTests
         }
 
         [TestMethod]
-        public void ShouldAddWhenStartIsNotPartOfRange()
+        public void ShouldAddWhenStartIsOutside()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -60,7 +60,7 @@ namespace ProjectTests
         }
 
         [TestMethod]
-        public void ShouldAddWhenCurrentRangeIsPartOfRange()
+        public void ShouldAddWhenStartAndEndAreInside()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -90,7 +90,7 @@ namespace ProjectTests
     public class SubtractMethodTests
     {
         [TestMethod]
-        public void ShouldSubtractWhenEndIsNotPartOfRange()
+        public void ShouldSubtractWhenEndIsOutside()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -116,7 +116,7 @@ namespace ProjectTests
         }
 
         [TestMethod]
-        public void ShouldSubtractWhenStartIsNotPartOfRange()
+        public void ShouldSubtractWhenStartIsOutside()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -139,6 +139,114 @@ namespace ProjectTests
             // Assert
             Assert.AreEqual(newRange.Start, range.End);
             Assert.AreEqual(newRange.End, currentRange.End);
+        }
+    }
+
+    [TestClass]
+    public class MergeMethodTests
+    {
+        [TestMethod]
+        public void ShouldMergeWhenEndIsOutside()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 15),
+                End = new DateTime(2020, 5, 15)
+            };
+
+            newRange.Merge(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, range.End);
+        }
+
+        [TestMethod]
+        public void ShouldMergeWhenStartIsOutside()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 3, 15),
+                End = new DateTime(2020, 4, 15)
+            };
+
+            newRange.Merge(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, range.Start);
+            Assert.AreEqual(newRange.End, currentRange.End);
+        }
+
+        [TestMethod]
+        public void ShouldMergeWhenStartAndEndAreInside()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 15),
+                End = new DateTime(2020, 4, 16)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            newRange.Merge(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, range.Start);
+            Assert.AreEqual(newRange.End, range.End);
+        }
+
+        [TestMethod]
+        public void ShouldMergeWhenRangesDoNotOverlap()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 6, 01),
+                End = new DateTime(2020, 6, 30)
+            };
+
+            newRange.Merge(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, range.End);
         }
     }
 }
