@@ -249,4 +249,51 @@ namespace ProjectTests
             Assert.AreEqual(newRange.End, range.End);
         }
     }
+
+    [TestClass]
+    public class ExpandToMethodTests
+    {
+        [TestMethod]
+        public void ShouldNotExpandWhenDateIsPartOfRange()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+
+            newRange.ExpandTo(new DateTime(2020, 4, 15));
+
+            // Assert
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, currentRange.End);
+        }
+
+        [TestMethod]
+        public void ShouldExpandWhenDateIsNewerThanRange()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+
+            DateTime date = new DateTime(2020, 6, 30);
+            newRange.ExpandTo(date);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, date);
+        }
+    }
 }
