@@ -27,23 +27,23 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange[] Add(DateTimeRange range)
         {
-            // If End date is after range.Start date then they overlap so they can be added.
-            if (End < range.Start)
+            switch (CheckCase(range))
             {
-                End = range.End;
-                return null;
+                case 0:
+                    Start = range.Start;
+                    break;
+                case 1:
+                    End = range.End;
+                    break;
+                case 2:
+                    Start = range.Start;
+                    End = range.End;
+                    break;
+                case 3:
+                    // Nothing changes.
+                    break;
             }
-            // If End date is before range.Start date then they don't overlap so they cannot be added.
-            else if (End > range.Start || Start < range.End)
-            {
-                throw new Exception("Dates cannot be added because they're not overlapping. Please use 'Merge' if you want to make longest period possible.");
-            }
-            // If Start date is before range.End date then they overlap so they can be added.
-            else
-            {
-                Start = range.Start;
-                return null;
-            }
+            return null;
         }
 
         /// <summary>
@@ -53,6 +53,21 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange[] Subtract(DateTimeRange range)
         {
+            switch (CheckCase(range))
+            {
+                case 0:
+                    Start = range.End;
+                    break;
+                case 1:
+                    End = range.Start;
+                    break;
+                case 2:
+                    // Would subtract everything.
+                    break;
+                case 3:
+                    // Would create two different ranges.
+                    break;
+            }
             return null;
         }
 
@@ -63,6 +78,21 @@ namespace DateRanges
         /// <param name="dateRange"></param>
         public DateTimeRange Merge(DateTimeRange dateRange)
         {
+            switch (CheckCase(dateRange))
+            {
+                case 0:
+                    End = dateRange.End;
+                    break;
+                case 1:
+                    Start = dateRange.Start;
+                    break;
+                case 2:
+                    // Would subtract everything.
+                    break;
+                case 3:
+                    // Would create two different ranges.
+                    break;
+            }
             return null;
         }
 
@@ -144,6 +174,35 @@ namespace DateRanges
         public Boolean Contains(DateTime date)
         {
             return true;
+        }
+
+        public int CheckCase(DateTimeRange range)
+        {
+            // If Start date is in between range and End date is after range.End then both ranges overlap and action can be taken.
+            if (Start > range.Start && Start < range.End && End > range.End)
+            {
+                return 0;
+            }
+            // If End date is in between range and Start date is before range.Start then both ranges overlap and action can be taken.
+            else if (End > range.Start && End < range.End && Start < range.Start)
+            {
+                return 1;
+            }
+            // If Start and End dates are in between range parameter then both ranges overlap and acton can be taken.
+            else if (Start < range.Start && End > range.End)
+            {
+                return 2;
+            }
+            // If range is in between Start and End dates then both ranges overlap but nothing should happen.
+            else if (Start > range.Start && End < range.End)
+            {
+                return 3;
+            }
+            // In any other unexpected case throw an exception.
+            else
+            {
+                throw new Exception("Something went wrong.");
+            }
         }
     }
 }

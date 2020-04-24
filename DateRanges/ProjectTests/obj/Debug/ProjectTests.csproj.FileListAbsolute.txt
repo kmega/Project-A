@@ -1,0 +1,16 @@
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\ProjectTests.dll
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\ProjectTests.pdb
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\DateRanges.dll
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\DateRanges.pdb
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\obj\Debug\ProjectTests.csprojAssemblyReference.cache
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\obj\Debug\ProjectTests.csproj.CoreCompileInputs.cache
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\obj\Debug\ProjectTests.csproj.CopyComplete
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\obj\Debug\ProjectTests.dll
+C:\Users\kmega\Desktop\Project-A\DateRanges\ProjectTests\obj\Debug\ProjectTests.pdb
