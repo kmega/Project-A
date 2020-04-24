@@ -5,7 +5,7 @@ using DateRanges;
 namespace ProjectTests
 {
     [TestClass]
-    public class RangeTests
+    public class AddMethodTests
     {
         [TestMethod]
         public void ShouldAddRange01()
@@ -17,18 +17,20 @@ namespace ProjectTests
                 End = new DateTime(2020, 4, 30)
             };
 
+            DateTimeRange newRange = currentRange;
+
             // Given
             DateTimeRange range = new DateTimeRange
             {
                 Start = new DateTime(2020, 4, 15),
                 End = new DateTime(2020, 5, 15)
             };
+            
+            newRange.Add(range);
 
             // Assert
-
-            currentRange.Add(range);
-
-            Assert.AreEqual(currentRange.End, range.End);
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, range.End);
         }
 
         [TestMethod]
@@ -41,6 +43,8 @@ namespace ProjectTests
                 End = new DateTime(2020, 4, 30)
             };
 
+            DateTimeRange newRange = currentRange;
+
             // Given
             DateTimeRange range = new DateTimeRange
             {
@@ -48,12 +52,11 @@ namespace ProjectTests
                 End = new DateTime(2020, 4, 15)
             };
 
+            newRange.Add(range);
+
             // Assert
-            Assert.AreNotEqual(currentRange.Start, range.Start);
-
-            currentRange.Add(range);
-
-            Assert.AreEqual(currentRange.Start, range.Start);
+            Assert.AreEqual(newRange.Start, range.Start);
+            Assert.AreEqual(newRange.End, currentRange.End);
         }
 
         [TestMethod]
@@ -66,6 +69,8 @@ namespace ProjectTests
                 End = new DateTime(2020, 4, 16)
             };
 
+            DateTimeRange newRange = currentRange;
+
             // Given
             DateTimeRange range = new DateTimeRange
             {
@@ -73,14 +78,46 @@ namespace ProjectTests
                 End = new DateTime(2020, 4, 30)
             };
 
+            newRange.Add(range);
+
             // Assert
-            Assert.AreNotEqual(currentRange.Start, range.Start);
-            Assert.AreNotEqual(currentRange.End, range.End);
+            Assert.AreEqual(newRange.Start, range.Start);
+            Assert.AreEqual(newRange.End, range.End);
+        }
+        [TestMethod]
+        public void ShouldAddRange04()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
 
-            currentRange.Add(range);
+            DateTimeRange newRange = currentRange;
 
-            Assert.AreEqual(currentRange.Start, new DateTime(2020, 4, 01));
-            Assert.AreEqual(currentRange.End, new DateTime(2020, 4, 30));
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 15),
+                End = new DateTime(2020, 4, 16)
+            };
+
+            newRange.Add(range);
+
+            // Assert
+            Assert.AreEqual(newRange.Start, currentRange.Start);
+            Assert.AreEqual(newRange.End, currentRange.End);
+        }
+    }
+
+    [TestClass]
+    public class holder
+    {
+        [TestMethod]
+        public void holder01()
+        {
+            Assert.Fail();
         }
     }
 }

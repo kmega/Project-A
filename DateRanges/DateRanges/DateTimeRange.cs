@@ -189,12 +189,12 @@ namespace DateRanges
                 return 1;
             }
             // If Start and End dates are in between range parameter then both ranges overlap and acton can be taken.
-            else if (Start < range.Start && End > range.End)
+            else if (Start > range.Start && End < range.End)
             {
                 return 2;
             }
             // If range is in between Start and End dates then both ranges overlap but nothing should happen.
-            else if (Start > range.Start && End < range.End)
+            else if (Start < range.Start && End > range.End)
             {
                 return 3;
             }
