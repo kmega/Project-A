@@ -118,7 +118,7 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
+                Start = new DateTime(2020, 4, 01),
                 End = new DateTime(2020, 4, 30)
             };
 
@@ -127,8 +127,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 5, 15),
-                End = new DateTime(2020, 5, 30)
+                Start = new DateTime(2020, 6, 01),
+                End = new DateTime(2020, 6, 30)
             };
 
             newRange.Add(range);
@@ -276,7 +276,7 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
+                Start = new DateTime(2020, 4, 01),
                 End = new DateTime(2020, 4, 30)
             };
 
@@ -285,8 +285,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 5, 15),
-                End = new DateTime(2020, 5, 30)
+                Start = new DateTime(2020, 6, 01),
+                End = new DateTime(2020, 6, 30)
             };
 
             newRange.Subtract(range);
@@ -504,7 +504,7 @@ namespace ProjectTests
         [DataRow(4, 5)]
         [DataRow(4, 4)]
         [DataRow(3, 5)]
-        public void ShouldIntersectsWithWhenRangesAreOverlapping(int firstMonth, int secondMonth)
+        public void ShouldReturnTrueWhenRangesAreOverlapping(int firstMonth, int secondMonth)
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -526,6 +526,121 @@ namespace ProjectTests
 
             // Assert
             Assert.IsTrue(value);
+        }
+
+        [TestMethod]
+        [DataRow(1)]
+        [DataRow(6)]
+        public void ShouldReturnFalseWhenRangesAreOverNotlapping(int month)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, month, 01),
+                End = new DateTime(2020, month, 30)
+            };
+
+            bool value = newRange.IntersectsWith(range);
+
+            // Assert
+            Assert.IsFalse(value);
+        }
+    }
+
+    [TestClass]
+    public class ContainsMethodTests
+    {
+        [TestMethod]
+        [DataRow(01, 10)]
+        [DataRow(10, 20)]
+        [DataRow(20, 30)]
+        public void ShouldReturnTrueWhenCurrentRangeContainsRange(int firstDay, int secondDay)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, firstDay),
+                End = new DateTime(2020, 4, secondDay)
+            };
+
+            bool value = newRange.IntersectsWith(range);
+
+            // Assert
+            Assert.IsTrue(value);
+        }
+
+        [TestMethod]
+        [DataRow(1)]
+        [DataRow(6)]
+        public void ShouldReturnFalseWhenCurrentRangeDoNotContainsRange(int month)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, month, 01),
+                End = new DateTime(2020, month, 30)
+            };
+
+            bool value = newRange.IntersectsWith(range);
+
+            // Assert
+            Assert.IsFalse(value);
+        }
+    }
+
+    [TestClass]
+    public class StartsWithMethodTests
+    {
+        [TestMethod]
+        public void x()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            bool value = newRange.IntersectsWith(range);
+
+            // Assert
+            Assert.Fail();
         }
     }
 }
