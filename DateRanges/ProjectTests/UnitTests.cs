@@ -13,8 +13,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -22,8 +22,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 5, 15)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 05, 15)
             };
 
             newRange.Add(range);
@@ -39,8 +39,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -48,8 +48,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 3, 15),
-                End = new DateTime(2020, 4, 15)
+                Start = new DateTime(2020, 03, 15),
+                End = new DateTime(2020, 04, 15)
             };
 
             newRange.Add(range);
@@ -65,8 +65,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 4, 16)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 04, 16)
             };
 
             DateTimeRange newRange = currentRange;
@@ -74,8 +74,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             newRange.Add(range);
@@ -91,8 +91,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -100,8 +100,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 4, 16)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 04, 16)
             };
 
             newRange.Add(range);
@@ -118,8 +118,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -127,8 +127,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 6, 01),
-                End = new DateTime(2020, 6, 30)
+                Start = new DateTime(2020, 06, 01),
+                End = new DateTime(2020, 06, 30)
             };
 
             newRange.Add(range);
@@ -146,8 +146,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -155,8 +155,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 5, 15)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 05, 15)
             };
 
             newRange.Subtract(range);
@@ -172,8 +172,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -181,8 +181,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 3, 15),
-                End = new DateTime(2020, 4, 15)
+                Start = new DateTime(2020, 03, 15),
+                End = new DateTime(2020, 04, 15)
             };
 
             newRange.Subtract(range);
@@ -198,8 +198,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 4, 16)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 04, 16)
             };
 
             DateTimeRange newRange = currentRange;
@@ -207,8 +207,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             newRange.Subtract(range);
@@ -224,8 +224,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -233,8 +233,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 04, 30)
             };
 
             newRange.Subtract(range);
@@ -251,8 +251,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -260,8 +260,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 4, 16)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 04, 16)
             };
 
             newRange.Subtract(range);
@@ -276,8 +276,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -285,8 +285,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 6, 01),
-                End = new DateTime(2020, 6, 30)
+                Start = new DateTime(2020, 06, 01),
+                End = new DateTime(2020, 06, 30)
             };
 
             newRange.Subtract(range);
@@ -304,8 +304,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -313,8 +313,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 5, 15)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 05, 15)
             };
 
             newRange.Merge(range);
@@ -330,8 +330,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -339,8 +339,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 3, 15),
-                End = new DateTime(2020, 4, 15)
+                Start = new DateTime(2020, 03, 15),
+                End = new DateTime(2020, 04, 15)
             };
 
             newRange.Merge(range);
@@ -356,8 +356,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 4, 16)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 04, 16)
             };
 
             DateTimeRange newRange = currentRange;
@@ -365,8 +365,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             newRange.Merge(range);
@@ -382,8 +382,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -391,8 +391,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 15),
-                End = new DateTime(2020, 4, 16)
+                Start = new DateTime(2020, 04, 15),
+                End = new DateTime(2020, 04, 16)
             };
 
             newRange.Merge(range);
@@ -408,8 +408,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -417,8 +417,8 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 6, 01),
-                End = new DateTime(2020, 6, 30)
+                Start = new DateTime(2020, 06, 01),
+                End = new DateTime(2020, 06, 30)
             };
 
             newRange.Merge(range);
@@ -439,15 +439,15 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
 
             // Given
 
-            newRange.ExpandTo(new DateTime(2020, 3, 15));
+            newRange.ExpandTo(new DateTime(2020, 03, 15));
 
             // Assert
         }
@@ -458,15 +458,15 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
 
             // Given
 
-            newRange.ExpandTo(new DateTime(2020, 4, 15));
+            newRange.ExpandTo(new DateTime(2020, 04, 15));
 
             // Assert
             Assert.AreEqual(newRange.Start, currentRange.Start);
@@ -479,15 +479,15 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
 
             // Given
 
-            DateTime date = new DateTime(2020, 6, 30);
+            DateTime date = new DateTime(2020, 06, 30);
             newRange.ExpandTo(date);
 
             // Assert
@@ -500,17 +500,17 @@ namespace ProjectTests
     public class IntersectsWithMethodTests
     {
         [TestMethod]
-        [DataRow(3, 4)]
-        [DataRow(4, 5)]
-        [DataRow(4, 4)]
-        [DataRow(3, 5)]
+        [DataRow(03, 04)]
+        [DataRow(04, 05)]
+        [DataRow(04, 04)]
+        [DataRow(03, 05)]
         public void ShouldReturnTrueWhenRangesAreOverlapping(int firstMonth, int secondMonth)
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -529,8 +529,8 @@ namespace ProjectTests
         }
 
         [TestMethod]
-        [DataRow(1)]
-        [DataRow(6)]
+        [DataRow(01)]
+        [DataRow(06)]
         public void ShouldReturnFalseWhenRangesAreOverNotlapping(int month)
         {
             // For
@@ -568,8 +568,8 @@ namespace ProjectTests
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -577,26 +577,26 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, firstDay),
-                End = new DateTime(2020, 4, secondDay)
+                Start = new DateTime(2020, 04, firstDay),
+                End = new DateTime(2020, 04, secondDay)
             };
 
-            bool value = newRange.IntersectsWith(range);
+            bool value = newRange.Contains(range);
 
             // Assert
             Assert.IsTrue(value);
         }
 
         [TestMethod]
-        [DataRow(1)]
-        [DataRow(6)]
+        [DataRow(01)]
+        [DataRow(06)]
         public void ShouldReturnFalseWhenCurrentRangeDoNotContainsRange(int month)
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -608,7 +608,7 @@ namespace ProjectTests
                 End = new DateTime(2020, month, 30)
             };
 
-            bool value = newRange.IntersectsWith(range);
+            bool value = newRange.Contains(range);
 
             // Assert
             Assert.IsFalse(value);
@@ -619,13 +619,16 @@ namespace ProjectTests
     public class StartsWithMethodTests
     {
         [TestMethod]
-        public void x()
+        [DataRow(01)]
+        [DataRow(15)]
+        [DataRow(30)]
+        public void ShouldReturnTrueWhenCurrentRangeStartsWithRange(int day)
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
             };
 
             DateTimeRange newRange = currentRange;
@@ -633,14 +636,14 @@ namespace ProjectTests
             // Given
             DateTimeRange range = new DateTimeRange
             {
-                Start = new DateTime(2020, 4, 01),
-                End = new DateTime(2020, 4, 30)
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, day)
             };
 
-            bool value = newRange.IntersectsWith(range);
+            bool value = newRange.StartsWith(range);
 
             // Assert
-            Assert.Fail();
+            Assert.IsTrue(value);
         }
     }
 }

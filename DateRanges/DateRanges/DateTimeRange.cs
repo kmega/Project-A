@@ -32,16 +32,16 @@ namespace DateRanges
             {
                 case 0:
                     Start = range.Start;
+                    End = range.End;
                     break;
                 case 1:
-                    End = range.End;
+                    // Changes nothing.
                     break;
                 case 2:
                     Start = range.Start;
-                    End = range.End;
                     break;
                 case 3:
-                    // Changes nothing.
+                    End = range.End;
                     break;
                 case 4:
                     throw new Exception("You can't add ranges that don't overlap. Use 'Merge' method to create longest period possible.");
@@ -62,17 +62,11 @@ namespace DateRanges
             switch (CheckRange(range))
             {
                 case 0:
-                    Start = range.End;
-                    break;
-                case 1:
-                    End = range.Start;
-                    break;
-                case 2:
                     // This would subtract everything so I'm assigning lowest value possible.
                     Start = DateTime.MinValue;
                     End = DateTime.MinValue;
                     break;
-                case 3:
+                case 1:
                     // Checks if subtraction won't split current range into two separate ranges.
                     if (range.Start == Start)
                     {
@@ -88,6 +82,12 @@ namespace DateRanges
                     {
                         throw new Exception("This subtraction would create two different ranges as a result.");
                     }
+                case 2:
+                    Start = range.End;
+                    break;
+                case 3:
+                    End = range.Start;
+                    break;
                 case 4:
                     throw new Exception("You can't subtract ranges that don't overlap.");
                 default:
@@ -108,16 +108,16 @@ namespace DateRanges
             {
                 case 0:
                     Start = dateRange.Start;
+                    End = dateRange.End;
                     break;
                 case 1:
-                    End = dateRange.End;
+                    // Changes nothing.
                     break;
                 case 2:
                     Start = dateRange.Start;
-                    End = dateRange.End;
                     break;
                 case 3:
-                    // Changes nothing.
+                    End = dateRange.End;
                     break;
                 case 4:
                     // Checks which date is the oldest and the newest and then assignes them.
@@ -187,11 +187,11 @@ namespace DateRanges
             switch (CheckRange(range))
             {
                 case 0:
-                case 1:
                 case 2:
+                case 3:
                 case 4:
                     return false;
-                case 3:
+                case 1:
                     return true;
                 default:
                     throw new Exception("Unexpected error occured.");
@@ -278,23 +278,23 @@ namespace DateRanges
 
         private int CheckRange(DateTimeRange range)
         {
-            // If Start date is in between range and End date is after range.End.
-            if (Start >= range.Start && Start <= range.End && End > range.End)
+            // If Start and End dates are in between range.
+            if (Start >= range.Start && End <= range.End)
             {
                 return 0;
             }
-            // If End date is in between range and Start date is before range.Start.
-            else if (End >= range.Start && End <= range.End && Start < range.Start)
+            // If range is in between Start and End dates.
+            else if (Start <= range.Start && End >= range.End)
             {
                 return 1;
             }
-            // If Start and End dates are in between range.
-            else if (Start >= range.Start && End <= range.End)
+            // If Start date is in between range and End date is after range.End.
+            if (Start >= range.Start && Start <= range.End && End > range.End)
             {
                 return 2;
             }
-            // If range is in between Start and End dates.
-            else if (Start <= range.Start && End >= range.End)
+            // If End date is in between range and Start date is before range.Start.
+            else if (End >= range.Start && End <= range.End && Start < range.Start)
             {
                 return 3;
             }
