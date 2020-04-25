@@ -28,7 +28,7 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange[] Add(DateTimeRange range)
         {
-            switch (CheckCase(range))
+            switch (CheckRange(range))
             {
                 case 0:
                     Start = range.Start;
@@ -59,7 +59,7 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange[] Subtract(DateTimeRange range)
         {
-            switch (CheckCase(range))
+            switch (CheckRange(range))
             {
                 case 0:
                     Start = range.End;
@@ -104,7 +104,7 @@ namespace DateRanges
         /// <param name="dateRange"></param>
         public DateTimeRange Merge(DateTimeRange dateRange)
         {
-            switch (CheckCase(dateRange))
+            switch (CheckRange(dateRange))
             {
                 case 0:
                     Start = dateRange.Start;
@@ -161,7 +161,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean IntersectsWith(DateTimeRange range)
         {
-            switch (CheckCase(range))
+            switch (CheckRange(range))
             {
                 case 0:
                 case 1:
@@ -183,7 +183,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean Contains(DateTimeRange range)
         {
-            switch (CheckCase(range))
+            switch (CheckRange(range))
             {
                 case 0:
                 case 1:
@@ -204,7 +204,14 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean StartsWith(DateTimeRange range)
         {
-            return true;
+            if (CheckDate(Start, range.Start) && range.End > Start && range.End < End)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -214,7 +221,14 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean EndsWith(DateTimeRange range)
         {
-            return true;
+            if (CheckDate(End, range.End) && range.Start > Start && range.Start < End)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         
         /// <summary>
@@ -224,7 +238,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean IsContinuationOf(DateTimeRange dateRange)
         {
-            return true;
+            return CheckDate(Start, dateRange.End);
         }
 
         /// <summary>
@@ -234,7 +248,14 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean IsEqualTo(DateTimeRange range)
         {
-            return true;
+            if (CheckDate(Start, range.Start) && CheckDate(End, range.End))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -244,10 +265,17 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean Contains(DateTime date)
         {
-            return true;
+            if (Start < date && End > date)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public int CheckCase(DateTimeRange range)
+        private int CheckRange(DateTimeRange range)
         {
             // If Start date is in between range and End date is after range.End.
             if (Start >= range.Start && Start <= range.End && End > range.End)
@@ -273,6 +301,18 @@ namespace DateRanges
             else
             {
                 return 4;
+            }
+        }
+
+        private Boolean CheckDate(DateTime currentDate, DateTime date)
+        {
+            if (currentDate == date)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
