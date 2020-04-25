@@ -433,7 +433,27 @@ namespace ProjectTests
     public class ExpandToMethodTests
     {
         [TestMethod]
-        public void ShouldNotExpandWhenDateIsPartOfRange()
+        [ExpectedException(typeof(Exception))]
+        public void ShouldNotExpandWhenDateIsEarlierThanStartingDate()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+
+            newRange.ExpandTo(new DateTime(2020, 3, 15));
+
+            // Assert
+        }
+
+        [TestMethod]
+        public void ShouldNotExpandWhenDateIsPartOfCurrentRange()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -454,7 +474,7 @@ namespace ProjectTests
         }
 
         [TestMethod]
-        public void ShouldExpandWhenDateIsNewerThanRange()
+        public void ShouldExpandWhenDateIsOlderThanCurrentRange()
         {
             // For
             DateTimeRange currentRange = new DateTimeRange
@@ -473,6 +493,39 @@ namespace ProjectTests
             // Assert
             Assert.AreEqual(newRange.Start, currentRange.Start);
             Assert.AreEqual(newRange.End, date);
+        }
+    }
+
+    [TestClass]
+    public class IntersectsWithMethodTests
+    {
+        [TestMethod]
+        [DataRow(3, 4)]
+        [DataRow(4, 5)]
+        [DataRow(4, 4)]
+        [DataRow(3, 5)]
+        public void ShouldIntersectsWithWhenRangesAreOverlapping(int firstMonth, int secondMonth)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 4, 01),
+                End = new DateTime(2020, 4, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, firstMonth, 15),
+                End = new DateTime(2020, secondMonth, 15)
+            };
+
+            bool value = newRange.IntersectsWith(range);
+
+            // Assert
+            Assert.IsTrue(value);
         }
     }
 }
