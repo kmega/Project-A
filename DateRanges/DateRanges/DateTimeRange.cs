@@ -205,7 +205,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean StartsWith(DateTimeRange range)
         {
-            if (CheckDate(Start, range.Start) && range.End > Start && range.End < End)
+            if (CheckDate(Start, range.Start) && Start <= range.End && End > range.End)
             {
                 return true;
             }
@@ -222,7 +222,7 @@ namespace DateRanges
         /// <returns></returns>
         public Boolean EndsWith(DateTimeRange range)
         {
-            if (CheckDate(End, range.End) && range.Start > Start && range.Start < End)
+            if (CheckDate(End, range.End) && End >= range.Start && Start < range.Start)
             {
                 return true;
             }

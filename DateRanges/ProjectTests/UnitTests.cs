@@ -621,7 +621,6 @@ namespace ProjectTests
         [TestMethod]
         [DataRow(01)]
         [DataRow(15)]
-        [DataRow(30)]
         public void ShouldReturnTrueWhenCurrentRangeStartsWithRange(int day)
         {
             // For
@@ -644,6 +643,33 @@ namespace ProjectTests
 
             // Assert
             Assert.IsTrue(value);
+        }
+
+        [TestMethod]
+        [DataRow(15)]
+        [DataRow(30)]
+        public void ShouldReturnFalseWhenCurrentRangeDoNotStartsWithRange(int day)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, day),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            bool value = newRange.StartsWith(range);
+
+            // Assert
+            Assert.IsFalse(value);
         }
     }
 }
