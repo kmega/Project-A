@@ -672,4 +672,221 @@ namespace ProjectTests
             Assert.IsFalse(value);
         }
     }
+
+    [TestClass]
+    public class EndsWithMethodTests
+    {
+        [TestMethod]
+        [DataRow(15)]
+        [DataRow(30)]
+        public void ShouldReturnTrueWhenCurrentRangeEndsWithRange(int day)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, day),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            bool value = newRange.EndsWith(range);
+
+            // Assert
+            Assert.IsTrue(value);
+        }
+
+        [TestMethod]
+        [DataRow(01)]
+        [DataRow(15)]
+        public void ShouldReturnFalseWhenCurrentRangeDoNotEndsWithRange(int day)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, day)
+            };
+
+            bool value = newRange.EndsWith(range);
+
+            // Assert
+            Assert.IsFalse(value);
+        }
+    }
+
+    [TestClass]
+    public class IsContinuationOfMethodTests
+    {
+        [TestMethod]
+        public void ShouldReturnTrueWhenCurrentRangeIsContinuationOfRange()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 03, 01),
+                End = new DateTime(2020, 04, 01)
+            };
+
+            bool value = newRange.IsContinuationOf(range);
+
+            // Assert
+            Assert.IsTrue(value);
+        }
+
+        [TestMethod]
+        [DataRow(30, 04)]
+        [DataRow(15, 04)]
+        [DataRow(10, 03)]
+        [DataRow(10, 06)]
+        public void ShouldReturnFalseWhenCurrentRangeIsNotContinuationOfRange(int day, int month)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, month, day),
+                End = new DateTime(2020, 05, 30)
+            };
+
+            bool value = newRange.IsContinuationOf(range);
+
+            // Assert
+            Assert.IsFalse(value);
+        }
+    }
+
+    [TestClass]
+    public class IsEqualToMethodTests
+    {
+        [TestMethod]
+        public void ShouldReturnTrueWhenCurrentRangeIsEqualToRange()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            bool value = newRange.IsEqualTo(range);
+
+            // Assert
+            Assert.IsTrue(value);
+        }
+
+        [TestMethod]
+        [DataRow(01, 28)]
+        [DataRow(05, 30)]
+        [DataRow(15, 25)]
+        public void ShouldReturnFalseWhenCurrentRangeIsNotEqualToRange(int firstDay, int secondDay)
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTimeRange range = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, firstDay),
+                End = new DateTime(2020, 04, secondDay)
+            };
+
+            bool value = newRange.IsEqualTo(range);
+
+            // Assert
+            Assert.IsFalse(value);
+        }
+    }
+
+    [TestClass]
+    public class ContainsDateMethodTests
+    {
+        [TestMethod]
+        public void ShouldReturnTrueWhenCurrentRangeContainsDate()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTime date = new DateTime(2020, 04, 15);
+            bool value = newRange.Contains(date);
+
+            // Assert
+            Assert.IsTrue(value);
+        }
+
+        [TestMethod]
+        public void ShouldReturnFalseWhenCurrentRangeDoNotContainsDate()
+        {
+            // For
+            DateTimeRange currentRange = new DateTimeRange
+            {
+                Start = new DateTime(2020, 04, 01),
+                End = new DateTime(2020, 04, 30)
+            };
+
+            DateTimeRange newRange = currentRange;
+
+            // Given
+            DateTime date = new DateTime(2020, 03, 01);
+            bool value = newRange.Contains(date);
+
+            // Assert
+            Assert.IsFalse(value);
+        }
+    }
 }
