@@ -46,7 +46,7 @@ namespace DateRanges
                 case 4:
                     throw new Exception("You can't add ranges that don't overlap. Use 'Merge' method to create longest period possible.");
                 default:
-                    throw new Exception("Something went wrong.");
+                    throw new Exception("Unexpected error occured.");
             }
 
             return null;
@@ -91,7 +91,7 @@ namespace DateRanges
                 case 4:
                     throw new Exception("You can't subtract ranges that don't overlap.");
                 default:
-                    throw new Exception("Something went wrong.");
+                    throw new Exception("Unexpected error occured.");
             }
 
             return null;
@@ -125,7 +125,7 @@ namespace DateRanges
                     End = End > dateRange.End ? End : dateRange.End;
                     break;
                 default:
-                    throw new Exception("Something went wrong.");
+                    throw new Exception("Unexpected error occured.");
             }
 
             return null;
@@ -138,6 +138,7 @@ namespace DateRanges
         /// <returns></returns>
         public DateTimeRange ExpandTo(DateTime date)
         {
+            // Checks if date is not earlier than starting date.
             if (date < Start)
             {
                 throw new Exception("You can't expand to date that is before starting date.");
@@ -171,7 +172,7 @@ namespace DateRanges
                 case 4:
                     return false;
                 default:
-                    throw new Exception("Something went wrong.");
+                    throw new Exception("Unexpected error occured.");
             }
         }
 
@@ -193,7 +194,7 @@ namespace DateRanges
                 case 3:
                     return true;
                 default:
-                    throw new Exception("Something went wrong.");
+                    throw new Exception("Unexpected error occured.");
             }
         }
 
